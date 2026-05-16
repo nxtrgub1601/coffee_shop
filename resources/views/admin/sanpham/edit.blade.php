@@ -43,14 +43,19 @@
 
                 <option value="">-- Chọn danh mục --</option>
 
+                <option value="Bánh ngọt"
+                    {{ old('theLoai', $sanpham->theLoai) == 'Bánh ngọt' ? 'selected' : '' }}>
+                    Bánh ngọt
+                </option>
+
                 <option value="Cà phê"
                     {{ old('theLoai', $sanpham->theLoai) == 'Cà phê' ? 'selected' : '' }}>
                     Cà phê
                 </option>
 
-                <option value="Trà"
-                    {{ old('theLoai', $sanpham->theLoai) == 'Trà' ? 'selected' : '' }}>
-                    Trà
+                <option value="Đồ ăn"
+                    {{ old('theLoai', $sanpham->theLoai) == 'Đồ ăn' ? 'selected' : '' }}>
+                    Đồ ăn
                 </option>
 
                 <option value="Freeze"
@@ -58,14 +63,14 @@
                     Freeze
                 </option>
 
-                <option value="Bánh ngọt"
-                    {{ old('theLoai', $sanpham->theLoai) == 'Bánh ngọt' ? 'selected' : '' }}>
-                    Bánh ngọt
-                </option>
-
                 <option value="Nước ép"
                     {{ old('theLoai', $sanpham->theLoai) == 'Nước ép' ? 'selected' : '' }}>
                     Nước ép
+                </option>
+
+                <option value="Trà"
+                    {{ old('theLoai', $sanpham->theLoai) == 'Trà' ? 'selected' : '' }}>
+                    Trà
                 </option>
 
             </select>

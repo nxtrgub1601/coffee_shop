@@ -19,18 +19,19 @@
 
 
     <div class="card shadow-sm border-0">
+    <div class="card-header bg-dark text-white py-3">
+        <div class="d-flex justify-content-between align-items-center">
 
-        <div class="card-header bg-dark text-white py-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">
-                    Danh sách sản phẩm ({{ $sanPhams->total() }} sản phẩm)
-                </h5>
+            <h5 class="mb-0">
+                Danh sách sản phẩm ({{ $sanPhams->total() }} sản phẩm)
+            </h5>
 
-                <div class="text-muted small">
-                    Trang {{ $sanPhams->currentPage() }} / {{ $sanPhams->lastPage() }}
-                </div>
+            <div class="small">
+                Trang {{ $sanPhams->currentPage() }} / {{ $sanPhams->lastPage() }}
             </div>
+
         </div>
+    </div>
 
 
         <div class="card-body p-0">

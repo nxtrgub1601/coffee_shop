@@ -47,7 +47,15 @@
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="{{ route('home') }}">
+        <a class="navbar-brand fw-bold text-white brand-logo d-flex align-items-center"
+        href="{{ route('home') }}">
+
+            <img src="{{ asset('images/logo.png') }}"
+                alt="Logo"
+                width="70"
+                height="70"
+                class="me-2">
+
             Highlands Coffee
         </a>
 
@@ -88,7 +96,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">
-                            🏠 Trang chủ
+                            Trang chủ
                         </a>
                     </li>
 
@@ -96,19 +104,19 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.index') }}">
-                                🛒 Giỏ hàng
+                                Giỏ hàng
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('order.history') }}">
-                                📜 Đơn hàng
+                                Đơn hàng
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('trahang.index') }}">
-                                🔄 Hoàn món
+                                Hoàn món
                             </a>
                         </li>
 
@@ -118,13 +126,13 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                                👨‍💼 Quản lý quán
+                                Quản lý quán
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.bao-cao-doanh-thu') }}">
-                                📊 Doanh thu
+                                Doanh thu
                             </a>
                         </li>
 
@@ -166,7 +174,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            🔐 Đăng nhập
+                            Đăng nhập
                         </a>
                     </li>
 
@@ -231,7 +239,7 @@
     <div class="chat-body" id="chat-body">
 
         <div class="bot">
-            Xin chào 👋 Bạn muốn thưởng thức gì hôm nay?
+            Xin chào Bạn muốn thưởng thức gì hôm nay?
         </div>
 
     </div>
@@ -260,19 +268,7 @@
     ☎ Hotline: 0901 234 567
 </div>
 
-<!-- FOOTER -->
-<footer class="text-white py-3 fixed-bottom" 
-        style="background:#B22830; z-index: 1030;">
-    
-    <div class="container d-flex justify-content-between align-items-center">
-        <div>
-            Highlands Coffee
-        </div>
-        <div>
-            &copy; {{ date('Y') }}
-        </div>
-    </div>
-</footer>
+
 
 <!-- POPUP -->
 @if(isset($khuyenMai) && $khuyenMai->count() > 0)
@@ -343,7 +339,7 @@
                 <button class="btn btn-warning"
                         data-bs-dismiss="modal">
 
-                    Thưởng thức ngay ☕
+                    Thưởng thức ngay 
 
                 </button>
 
@@ -381,7 +377,7 @@ function sendMessage() {
 
         body.innerHTML += `
             <div class="bot">
-                ☕ Highlands Coffee sẽ phản hồi bạn sớm nhất!
+                Highlands Coffee sẽ phản hồi bạn sớm nhất!
             </div>
         `;
 

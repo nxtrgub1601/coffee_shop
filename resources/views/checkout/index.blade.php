@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="row">
-        <!-- Bên trái: Thông tin đơn hàng -->
+        <!-- Thông tin đơn hàng -->
         <div class="col-lg-8">
             <h3 class="mb-4">Thông tin đơn hàng</h3>
 
@@ -22,33 +22,22 @@
                     @foreach($items as $item)
                     @php
                         $sp = $item->sanPham;
-                        // 🔥 Ưu tiên giá đã lưu trong giỏ hàng
                         $giaHienTai = $item->gia ?? $sp->gia;
                         $giaGoc     = $sp->gia;
                         $thanhTien  = $giaHienTai * $item->soLuong;
                     @endphp
-
                     <tr>
                         <td>{{ $sp->tenSanPham }}</td>
                         <td class="text-center">{{ $item->soLuong }}</td>
                         <td class="text-end">
                             @if($giaHienTai < $giaGoc)
-                                <span class="text-danger fw-bold">
-                                    {{ number_format($giaHienTai) }} ₫
-                                </span>
-                                <br>
-                                <small class="text-muted text-decoration-line-through">
-                                    {{ number_format($giaGoc) }} ₫
-                                </small>
+                                <span class="text-danger fw-bold">{{ number_format($giaHienTai) }} ₫</span>
+                                <br><small class="text-muted text-decoration-line-through">{{ number_format($giaGoc) }} ₫</small>
                             @else
-                                <span class="fw-bold">
-                                    {{ number_format($giaHienTai) }} ₫
-                                </span>
+                                <span class="fw-bold">{{ number_format($giaHienTai) }} ₫</span>
                             @endif
                         </td>
-                        <td class="text-end fw-bold">
-                            {{ number_format($thanhTien) }} ₫
-                        </td>
+                        <td class="text-end fw-bold">{{ number_format($thanhTien) }} ₫</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -73,7 +62,7 @@
             </table>
         </div>
 
-        <!-- Bên phải: Form thanh toán -->
+        <!-- Form thanh toán -->
         <div class="col-lg-4">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
@@ -84,20 +73,17 @@
                     <form id="checkoutForm" action="{{ route('checkout.store') }}" method="POST">
                         @csrf
 
-                        <!-- Họ và tên -->
                         <div class="mb-3">
                             <label class="form-label">Họ và tên <span class="text-danger">*</span></label>
                             <input type="text" name="tenKhachHang" class="form-control" 
                                    value="{{ old('tenKhachHang', $khachHang->tenKhachHang ?? '') }}" required>
                         </div>
 
-                        <!-- Địa chỉ -->
                         <div class="mb-3">
                             <label class="form-label">Địa chỉ giao hàng <span class="text-danger">*</span></label>
                             <textarea name="diaChi" class="form-control" rows="2" required>{{ old('diaChi', $khachHang->diaChi ?? '') }}</textarea>
                         </div>
 
-                        <!-- Số điện thoại -->
                         <div class="mb-3">
                             <label class="form-label">Số điện thoại <span class="text-danger">*</span></label>
                             <input type="tel" name="soDienThoai" class="form-control" 
@@ -127,34 +113,32 @@
                             <label class="form-label fw-bold">Phương thức thanh toán</label>
                             <select name="phuongThuc" id="phuongThuc" class="form-select" required>
                                 <option value="TienMat">Tiền mặt khi nhận hàng (COD)</option>
-                                <option value="ChuyenKhoan">Chuyển khoản ngân hàng</option>
-                                <option value="TheTinDung">Thẻ tín dụng / Thẻ ghi nợ</option>
-                                <option value="ViDienTu">Ví điện tử (Momo, ZaloPay...)</option>
+                                <option value="ChuyenKhoan">Chuyển khoản ngân hàng (QR)</option>
                             </select>
                         </div>
 
-                        <!-- Khu vực QR Code -->
-                        <div id="qrCodeSection" class="mb-4" style="display: none;">
+                        <!-- QR Code -->
+                        <div id="qrCodeSection" class="mb-4">
                             <div class="card border-primary">
                                 <div class="card-header bg-primary text-white text-center py-2">
                                     <h6 class="mb-0">Quét mã QR để thanh toán</h6>
                                 </div>
                                 <div class="card-body text-center p-3">
                                     <img id="qrImage" 
-                                         src="https://img.vietqr.io/image/BIDV-2601663003-compact2.png?amount=0"
+                                         src="https://img.vietqr.io/image/VCB-1026340256-compact2.png?amount=0"
                                          class="img-fluid rounded shadow" 
                                          style="max-width: 280px;"
                                          alt="Mã QR Thanh toán">
 
                                     <div class="mt-3 small text-muted">
-                                        <p class="mb-1 fw-bold">Ngân hàng BIDV</p>
-                                        <p class="mb-1">Số tài khoản: <strong>2601663003</strong></p>
-                                        <p>Chủ tài khoản: NGUYEN TRUNG KIEN</p>
+                                        <p class="mb-1 fw-bold">Ngân hàng Vietcombank</p>
+                                        <p class="mb-1">Số tài khoản: <strong>1026340256</strong></p>
+                                        <p>Chủ tài khoản: NGUYEN XUAN TRUONG</p>
                                         <p class="mt-2 text-danger fw-bold">Vui lòng chuyển đúng số tiền trên đơn hàng</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>          
+                        </div>
 
                         <button type="submit" class="btn btn-success btn-lg w-100">
                             <i class="bi bi-check-circle"></i> Xác nhận đặt hàng
@@ -170,19 +154,16 @@
 @section('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const select     = document.getElementById('phuongThuc');
-    const qrSection  = document.getElementById('qrCodeSection');
-    const qrImage    = document.getElementById('qrImage');
-
-    const baseUrl = "https://img.vietqr.io/image/BIDV-2601663003-compact2.png";
+    const select    = document.getElementById('phuongThuc');
+    const qrSection = document.getElementById('qrCodeSection');
+    const qrImage   = document.getElementById('qrImage');
+    const baseUrl   = "https://img.vietqr.io/image/VCB-1026340256-compact2.png";
+    const amount    = {{ (int) $total }};
+    const addInfo   = encodeURIComponent("DH{{ auth()->id() ?? 'KH' }}");
 
     function updateQR() {
         if (select.value === 'ChuyenKhoan') {
-            const amount = {{ (int) $total }};
-            const addInfo = encodeURIComponent("DH{{ auth()->id() ?? 'KH' }}");
-
-            const newSrc = `${baseUrl}?amount=${amount}&addInfo=${addInfo}&accountName=NGUYEN%20TRUNG%20KIEN`;
-
+            const newSrc = `${baseUrl}?amount=${amount}&addInfo=${addInfo}&accountName=NGUYEN%20XUAN%20TRUONG`;
             qrImage.src = newSrc;
             qrSection.style.display = 'block';
         } else {

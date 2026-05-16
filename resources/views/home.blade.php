@@ -5,56 +5,41 @@
 @section('content')
 <div class="container mt-4">
 
-    <!-- BANNER -->
-    <div id="bannerCarousel" 
-         class="carousel slide carousel-fade mb-5"
-         data-bs-ride="carousel"
-         data-bs-interval="4000"
-         data-bs-pause="false">
+<!-- BANNER -->
+<div id="bannerCarousel" 
+     class="carousel slide carousel-fade mb-5"
+     data-bs-ride="carousel"
+     data-bs-interval="4000"
+     data-bs-pause="false">
 
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner rounded-4 overflow-hidden">
-
-            <div class="carousel-item active">
-                <div class="hero-slide" style="background-image: url('{{ asset('images/banner_1.jpg') }}')">
-                    <div class="overlay"></div>
-
-                    <div class="content">
-                        <h1 class="fw-bold">Highlands Coffee</h1>
-                        <p>Không gian thư giãn cùng hương vị cà phê đậm đà</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="hero-slide" style="background-image: url('{{ asset('images/banner_2.jpg') }}')">
-                    <div class="overlay"></div>
-
-                    <div class="content">
-                        <h1>Bánh ngọt mỗi ngày</h1>
-                        <p>Thưởng thức món ngon cùng ly cà phê yêu thích</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="hero-slide" style="background-image: url('{{ asset('images/banner_3.jpg') }}')">
-                    <div class="overlay"></div>
-
-                    <div class="content">
-                        <h1>Góc chill cuối tuần</h1>
-                        <p>Không gian nhẹ nhàng cho những buổi gặp gỡ</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
     </div>
+
+    <div class="carousel-inner rounded-4 overflow-hidden">
+
+        <div class="carousel-item active">
+            <img src="{{ asset('images/banner_1.jpg') }}" 
+                 class="d-block w-100 banner-img" 
+                 alt="Banner 1">
+        </div>
+
+        <div class="carousel-item">
+            <img src="{{ asset('images/banner_2.jpg') }}" 
+                 class="d-block w-100 banner-img" 
+                 alt="Banner 2">
+        </div>
+
+        <div class="carousel-item">
+            <img src="{{ asset('images/banner_3.jpg') }}" 
+                 class="d-block w-100 banner-img" 
+                 alt="Banner 3">
+        </div>
+
+    </div>
+</div>
 
     <!-- TITLE -->
     <h3 class="mb-4">Sản phẩm nổi bật</h3>
