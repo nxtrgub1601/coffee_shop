@@ -6,72 +6,92 @@
 
 <div class="content-box">
 
-    <h3 class="mb-3">🔥 Chương trình giảm giá</h3>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <a href="{{ route('admin.giamgia.create') }}"
-       class="btn btn-primary mb-3">
-        ➕ Thêm mới
-    </a>
+        <h2>🔥 Chương trình giảm giá</h2>
 
-    <table class="table table-dark table-bordered">
+        <a href="{{ route('admin.giamgia.create') }}"
+           class="btn btn-success">
 
-        <thead>
-            <tr>
-                <th>Tên</th>
-                <th>Thể loại</th>
-                <th>%</th>
-                <th>Thời gian</th>
-                <th>Hành động</th>
-            </tr>
-        </thead>
+            Thêm mới
 
-        <tbody>
+        </a>
 
-            @foreach($ds as $item)
+    </div>
 
-            <tr>
+    @if($ds->isEmpty())
 
-                <td>{{ $item->tenChuongTrinh }}</td>
+        <div class="alert alert-info">
+            Chưa có chương trình giảm giá nào.
+        </div>
 
-                <td>{{ $item->theLoai }}</td>
+    @else
 
-                <td>{{ $item->phanTramGiam }}%</td>
+        <table class="table table-bordered table-hover">
 
-                <td>
-                    {{ $item->ngayBatDau }}
-                    →
-                    {{ $item->ngayKetThuc }}
-                </td>
+            <thead class="table-dark">
 
-                <td>
+                <tr>
+                    <th>Tên</th>
+                    <th>Thể loại</th>
+                    <th>% giảm</th>
+                    <th>Thời gian</th>
+                    <th>Hành động</th>
+                </tr>
 
-                    <a href="{{ route('admin.giamgia.edit', $item) }}"
-                       class="btn btn-warning btn-sm">
-                        Sửa
-                    </a>
+            </thead>
 
-                    <form action="{{ route('admin.giamgia.destroy', $item) }}"
-                          method="POST"
-                          class="d-inline">
+            <tbody>
 
-                        @csrf
-                        @method('DELETE')
+                @foreach($ds as $item)
 
-                        <button class="btn btn-danger btn-sm">
-                            Xóa
-                        </button>
+                <tr>
 
-                    </form>
+                    <td>{{ $item->tenChuongTrinh }}</td>
 
-                </td>
+                    <td>{{ $item->theLoai }}</td>
 
-            </tr>
+                    <td>{{ $item->phanTramGiam }}%</td>
 
-            @endforeach
+                    <td>
+                        {{ $item->ngayBatDau }}
+                        →
+                        {{ $item->ngayKetThuc }}
+                    </td>
 
-        </tbody>
+                    <td>
 
-    </table>
+                        <a href="{{ route('admin.giamgia.edit', $item) }}"
+                           class="btn btn-warning btn-sm">
+
+                            Sửa
+
+                        </a>
+
+                        <form action="{{ route('admin.giamgia.destroy', $item) }}"
+                              method="POST"
+                              class="d-inline">
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger btn-sm">
+                                Xóa
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+    @endif
 
 </div>
 

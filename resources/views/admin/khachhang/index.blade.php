@@ -32,9 +32,9 @@
     </a>
 
 
-    <table class="table table-dark table-hover">
+    <table class="table table-bordered table-hover">
 
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>ID</th>
                 <th>Tên</th>

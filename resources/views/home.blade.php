@@ -102,7 +102,7 @@
                     <a href="{{ route('sanpham.show', $sp->idSanPham) }}"
                        class="btn btn-detail w-100 mb-2">
 
-                        ☕ Xem món
+                        Xem món
 
                     </a>
 
@@ -115,7 +115,7 @@
                                value="{{ $sp->idSanPham }}">
 
                         <button class="btn btn-spotify w-100">
-                            🛒 Thêm vào giỏ
+                            Thêm vào giỏ
                         </button>
 
                     </form>
@@ -131,4 +131,79 @@
     </div>
 
 </div>
+
+<!-- FOOTER -->
+<footer class="footer-highlands mt-5 pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Cột 1 -->
+            <div class="col-md-4 mb-4">
+
+                <h4 class="fw-bold mb-3 footer-title">
+                    Highlands Coffee
+                </h4>
+
+                <p class="small footer-text">
+                    Website bán cà phê trực tuyến với nhiều thức uống hấp dẫn,
+                    giao hàng nhanh chóng và tiện lợi.
+                </p>
+
+            </div>
+
+            <!-- Cột 2 -->
+            <div class="col-md-4 mb-4">
+
+                <h4 class="fw-bold mb-3 footer-title">
+                    Liên hệ
+                </h4>
+
+                <p class="small mb-2">
+                    📍 Hà Nội, Việt Nam
+                </p>
+
+                <p class="small mb-2">
+                    📞 0123 456 789
+                </p>
+
+                <p class="small">
+                    ✉️ highlandscoffee@gmail.com
+                </p>
+
+            </div>
+
+            <!-- Cột 3 -->
+            <div class="col-md-4 mb-4">
+
+                <h4 class="fw-bold mb-3 footer-title">
+                    Theo dõi chúng tôi
+                </h4>
+
+                <a href="https://www.facebook.com/highlandscoffeevietnam/?locale=vi_VN" class="d-block mb-2 footer-link">
+                    Facebook
+                </a>
+
+                <a href="https://www.instagram.com/highlandscoffeevietnam/" class="d-block mb-2 footer-link">
+                    Instagram
+                </a>
+
+                <a href="https://www.tiktok.com/@highlandscoffeevietnam" class="footer-link">
+                    TikTok
+                </a>
+
+            </div>
+
+        </div>
+
+        <hr class="footer-line">
+
+        <div class="text-center small pt-2">
+            © {{ date('Y') }} Highlands Coffee. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
 @endsection

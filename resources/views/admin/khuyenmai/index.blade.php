@@ -8,12 +8,12 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <h2>🎟️ Quản lý Khuyến mãi</h2>
+        <h2>Quản lý Khuyến mãi</h2>
 
         <a href="{{ route('admin.khuyenmai.create') }}"
            class="btn btn-success">
 
-            + Thêm khuyến mãi mới
+            Thêm khuyến mãi mới
 
         </a>
 

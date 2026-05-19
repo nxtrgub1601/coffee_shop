@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">📦 Lịch sử mua hàng của bạn</h2>
+    <h2 class="mb-4">Lịch sử mua hàng của bạn</h2>
 
     @if($donHangs->isEmpty())
         <div class="alert alert-info">Bạn chưa có đơn hàng nào.</div>

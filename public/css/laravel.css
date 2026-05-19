@@ -417,25 +417,6 @@ h1, h2, h3, h4, h5{
 
 
 /* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background: #B22830 !important;
-    color: white;
-}
-
-footer a{
-    color: white;
-    text-decoration: none;
-}
-
-footer a:hover{
-    color: #FFD166;
-}
-
-
-/* =========================================================
    ADMIN DASHBOARD
 ========================================================= */
 
@@ -462,6 +443,16 @@ footer a:hover{
     text-shadow: none !important;
 }
 
+
+.cart-header{
+    background: #27A4F2 !important;
+}
+
+.cart-header th{
+    background: #27A4F2 !important;
+    color: white !important;
+    border-color: #1d8ed4 !important;
+}
 /* ===== SIDEBAR ===== */
 
 .sidebar{
@@ -869,4 +860,36 @@ footer a:hover{
         right: 5%;
     }
 
+}
+
+
+/* FOOTER */
+
+.footer-highlands{
+    background: linear-gradient(to right, #7b1113, #b22222);
+    color: white;
+}
+
+.footer-title{
+    color: white;
+}
+
+.footer-text{
+    line-height: 1.8;
+    color: white;
+}
+
+.footer-link{
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-link:hover{
+    color: #ffd166;
+    padding-left: 5px;
+}
+
+.footer-line{
+    border-color: rgba(255,255,255,0.2);
 }

@@ -40,7 +40,7 @@
 
                 <table class="table table-hover mb-0 align-middle">
 
-                    <thead class="table-light">
+                    <thead class="table-dark">
                         <tr>
                             <th>ID</th>
                             <th>Hình</th>

@@ -18,7 +18,7 @@
                 @csrf
 
                 <table class="table table-bordered table-hover">
-                    <thead class="table-dark">
+                    <thead class="cart-header">
                         <tr>
                             <th><input type="checkbox" id="checkAll"></th>
                             <th>Hình</th>

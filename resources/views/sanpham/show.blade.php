@@ -78,8 +78,8 @@
         </div>
 
         <!-- Trạng thái -->
-        <div class="mb-4">
-            <strong>Trạng thái:</strong>
+        <div class="mb-4" >
+            <strong style="color: black;">Trạng thái:</strong>
 
             <span class="status-badge 
                 {{ $sanPham->trangThai === 'Còn hàng' ? 'status-success' : 'status-danger' }}">
