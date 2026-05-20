@@ -1,4 +1,5 @@
-<?php   
+<?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -7,12 +8,14 @@ use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
 {
-    // 📌 Danh sách khách hàng
+    // =========================
+    // Danh sách khách hàng
+    // =========================
     public function index(Request $request)
     {
         $query = NguoiDung::where('vaiTro', 'Customer');
 
-        // 🔍 tìm kiếm
+        // Tìm kiếm
         if ($request->q) {
             $query->where('tenNguoiDung', 'like', '%' . $request->q . '%');
         }
@@ -22,13 +25,17 @@ class KhachHangController extends Controller
         return view('admin.khachhang.index', compact('khachHangs'));
     }
 
-    // 📌 Form thêm
+    // =========================
+    // Form thêm khách hàng
+    // =========================
     public function create()
     {
         return view('admin.khachhang.create');
     }
 
-    // 📌 Lưu
+    // =========================
+    // Lưu khách hàng
+    // =========================
     public function store(Request $request)
     {
         $request->validate([
@@ -40,49 +47,67 @@ class KhachHangController extends Controller
         NguoiDung::create([
             'tenNguoiDung' => $request->tenNguoiDung,
             'email' => $request->email,
-            'matKhau' => bcrypt($request->matKhau), // 🔥 đúng field
+            'matKhau' => bcrypt($request->matKhau),
             'vaiTro' => 'Customer'
         ]);
 
-        return redirect()->route('admin.khachhang.index')
+        return redirect()
+            ->route('admin.khachhang.index')
             ->with('success', 'Thêm khách hàng thành công');
     }
 
-    // 📌 Sửa
+    // =========================
+    // Form sửa khách hàng
+    // =========================
     public function edit($id)
     {
         $kh = NguoiDung::findOrFail($id);
+
         return view('admin.khachhang.edit', compact('kh'));
     }
 
-    // 📌 Update
+    // =========================
+    // Cập nhật khách hàng
+    // =========================
     public function update(Request $request, $id)
     {
+        // Tìm khách hàng
         $kh = NguoiDung::findOrFail($id);
 
+        // Validate
         $request->validate([
             'tenNguoiDung' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:nguoidung,email,' . $id . ',id'
         ]);
 
+        // Gán dữ liệu
         $kh->tenNguoiDung = $request->tenNguoiDung;
         $kh->email = $request->email;
 
-        // 🔥 nếu nhập mật khẩu mới thì update
+        // Nếu có nhập mật khẩu mới
         if ($request->filled('matKhau')) {
             $kh->matKhau = bcrypt($request->matKhau);
         }
 
+        // Lưu
         $kh->save();
 
-        return redirect()->route('admin.khachhang.index')
-            ->with('success', 'Cập nhật thành công');
+        return redirect()
+            ->route('admin.khachhang.index')
+            ->with('success', 'Cập nhật khách hàng thành công');
     }
 
-    // 📌 Xóa
+    // =========================
+    // Xóa khách hàng
+    // =========================
     public function destroy($id)
     {
-        NguoiDung::destroy($id);
-        return back()->with('success', 'Đã xóa khách hàng');
+        $kh = NguoiDung::findOrFail($id);
+
+        $kh->delete();
+
+        return redirect()
+            ->route('admin.khachhang.index')
+            ->with('success', 'Xóa khách hàng thành công');
     }
 }
